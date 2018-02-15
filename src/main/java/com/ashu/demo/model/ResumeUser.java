@@ -11,11 +11,13 @@ public class ResumeUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
    private  int id;
-
+    @NotNull
+    private String pictureUrl;
+@NotNull
     private String firstName;
-
+@NotNull
     private String lastName;
-
+@NotNull
     private String email;
 
 
@@ -83,5 +85,13 @@ public class ResumeUser {
 
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 }

@@ -102,7 +102,7 @@ public class HomeController {
 
   @GetMapping("/addsummary")
     public String addSummary(Model model) {
-        model.addAttribute("summary",new Education());
+        model.addAttribute("summary",new Summary());
         return "summaryform";
     }
 
@@ -186,6 +186,79 @@ public class HomeController {
 
         return "buildresumeform";
     }
+
+
+
+    @GetMapping("/displaycompletedresume")
+    public String display(Model model)
+    {
+
+        model.addAttribute("contact", resumeUserRepository.findAll());
+
+        model.addAttribute("educations", educationRepository.findAll());
+
+        model.addAttribute("experiences", experienceRepository.findAll());
+
+
+        model.addAttribute("skills", skillRepository.findAll());
+
+        model.addAttribute("summary", summaryRepository.findAll());
+
+        model.addAttribute("references", referenceRepository.findAll());
+
+        return "displayresume";
+    }
+
+    @GetMapping("/displaycontact")
+    public String displayContact(Model model)
+    {
+
+        model.addAttribute("contact", resumeUserRepository.findAll());
+
+        return "displayresume";
+    }
+
+
+    @GetMapping("/disaplyeducation")
+    public String displayEducation(Model model)
+    {
+
+        model.addAttribute("educations", educationRepository.findAll());
+        return "displayresume";
+    }
+    @GetMapping("/disaplayexperience")
+    public String displayExperience(Model model)
+    {
+
+        model.addAttribute("experiences", experienceRepository.findAll());
+        return "displayresume";
+    }
+     @GetMapping("/dsiplayskill")
+    public String displaySkill(Model model)
+    {
+
+        model.addAttribute("skills", skillRepository.findAll());
+        return "displayresume";
+    }
+
+        @GetMapping("/displaysummary")
+    public String displaySummary(Model model)
+    {
+
+        model.addAttribute("summary", summaryRepository.findAll());
+        return "displayresume";
+    }
+
+
+         @GetMapping("/displayreference")
+    public String displayReference(Model model)
+    {
+
+        model.addAttribute("references", referenceRepository.findAll());
+        return "displayresume";
+    }
+
+
 
 
 

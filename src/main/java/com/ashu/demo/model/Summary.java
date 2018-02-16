@@ -18,8 +18,8 @@ import javax.validation.constraints.Size;
 
 
         @NotNull
-        @Size(min=20,message = "please enter summary")
-        private String summary;
+        @Size(min=5,message = "please enter summary")
+        private String summarytext;
 
         public long getId() {
             return id;
@@ -29,12 +29,12 @@ import javax.validation.constraints.Size;
             this.id = id;
         }
 
-        public String getSummary() {
-            return summary;
+        public String getSummarytext() {
+            return summarytext;
         }
 
-        public void setSummary(String summary) {
-            this.summary = summary;
+        public void setSummarytext(String summarytext) {
+            this.summarytext = summarytext;
         }
     }
 

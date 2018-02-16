@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div th:replace="fragments/template::resumenav">
+<div th:replace="fragments/template::navbar">
 </div>
 
 <div class="container">
@@ -32,12 +32,15 @@
             Graduation Year: <input type="date" th:field="*{gradYear}" class="form-control"/>
             <span th:if="${#fields.hasErrors('gradYear')}" th:errors="*{gradYear}"></span> <br/>
 
-            <input type="submit" value="Save"  class="btn btn-primary"/>
+            <input type="submit" value="Save and Add more"  class="btn btn-primary"/>
+
         </form>
+
+        <a class="btn btn-primary" href="/addexperience" role="button">Add Experience</a>
     </div>
 
 
-    <a class="btn btn-primary" href="/buildresume" role="button">View Progress</a>
+    <a class="btn btn-primary" href="/disaplyeducation" role="button">View Progress</a>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

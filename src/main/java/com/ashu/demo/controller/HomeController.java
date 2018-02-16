@@ -43,6 +43,18 @@ public class HomeController {
     }
 
 
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "login";
+    }
+
     //contain all the links
     @GetMapping("/buildresume")
     public String buildResume(){
@@ -75,7 +87,7 @@ public class HomeController {
         }
         resumeUserRepository.save(resumeUser);
 
-        return "buildresumeform";
+        return "redirect:/addsummary";
 
     }
 
@@ -96,7 +108,7 @@ public class HomeController {
 
         educationRepository.save(education);
 
-        return "buildresumeform";
+        return "redirect:/addeducation";
     }
 
 
@@ -117,7 +129,7 @@ public class HomeController {
 
         summaryRepository.save(summary);
 
-        return "buildresumeform";
+        return "redirect:/addeducation";
     }
 
 
@@ -139,7 +151,7 @@ public class HomeController {
 
         experienceRepository.save(experience);
 
-        return "buildresumeform";
+        return "redirect:/addexperience";
     }
 
 
@@ -162,7 +174,7 @@ public class HomeController {
 
         skillRepository.save(skill);
 
-        return "buildresumeform";
+        return "redirect:/addskill";
     }
 
 
@@ -184,7 +196,7 @@ public class HomeController {
 
        referenceRepository.save(reference);
 
-        return "buildresumeform";
+        return "redirect:/addreference";
     }
 
 

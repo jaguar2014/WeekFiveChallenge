@@ -11,7 +11,7 @@
 <body>
 <!-- Change the Navbar into a fragment, and make the class active depending on the variable passed -->
 
-<div th:replace="fragments/template::resumenav">
+<div th:replace="fragments/template::navbar">
 </div>
 
 <div class="container">
@@ -53,13 +53,13 @@
             <span th:if="${#fields.hasErrors('dutythree')}" th:errors="*{dutythree}"></span> <br/>
 
 
-            <input type="submit" value="Save"  class="btn btn-primary"/>
+            <input type="submit" value="Save and Add more"  class="btn btn-primary"/>
 
         </form>
-
+        <a class="btn btn-primary" href="/addskill" role="button">Add Skill</a>
     </div>
 
-    <a class="btn btn-primary" href="/buildresume" role="button">View Progress</a>
+    <a class="btn btn-primary" href="/disaplayexperience" role="button">View Progress</a>
 
 
 <!-- Latest compiled and minified JavaScript -->

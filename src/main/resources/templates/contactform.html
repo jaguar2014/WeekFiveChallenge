@@ -12,11 +12,11 @@
 <body>
 <!-- Change the Navbar into a fragment, and make the class active depending on the variable passed -->
 
-<div th:replace="fragments/template::resumenav">
+<div th:replace="fragments/template::navbar">
 </div>
 
 <div class="container">
-    <h1 class="text-center">Add Experiences</h1>
+    <h1 class="text-center">Add Contact Info</h1>
     <div class="col-md-6 col-md-offset-3">
 
         <form th:action="@{/addcontact}" th:object="${resumeuser}" th:method="POST" class="form-group">

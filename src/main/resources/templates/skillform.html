@@ -11,7 +11,7 @@
 <body>
 <!-- Change the Navbar into a fragment, and make the class active depending on the variable passed -->
 
-<div th:replace="fragments/template::resumenav">
+<div th:replace="fragments/template::navbar">
 </div>
 
 
@@ -31,9 +31,11 @@
 
             <input type="submit" value="Save" class="btn btn-primary"/>
         </form>
+
+        <a class="btn btn-primary" href="/addreference" role="button">Add Reference</a>
     </div>
 
-    <a class="btn btn-primary" href="/buildresume" role="button">View Progress</a>
+    <a class="btn btn-primary" href="/displayskill" role="button">View Progress</a>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

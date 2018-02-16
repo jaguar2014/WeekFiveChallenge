@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" >
 <head>
 
     <meta charset="utf-8">
@@ -32,14 +33,15 @@
 <div th:replace="fragments/template::navbar">
 </div>
 
+
 <div class="container-fluid p-0">
 
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="start">
         <div class="my-auto">
 
 
-            <a class="btn btn-primary" href="/addcontact" role="button">Start Building Your Resume</a>
-            <a class="btn btn-primary" href="/buildcoverletter" role="button">Start Building Your Cover Letter</a>
+            <a sec:authorize="hasAuthority('APPLICANT')" class="btn btn-primary" href="/addcontact" role="button">Start Building Your Resume</a>
+            <a sec:authorize="hasAuthority('APPLICANT')" class="btn btn-primary" href="/buildcoverletter" role="button">Start Building Your Cover Letter</a>
         </div>
     </section>
 

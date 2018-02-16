@@ -218,7 +218,7 @@ public class HomeController {
 
         model.addAttribute("references", referenceRepository.findAll());
 
-        return "displayresume";
+        return "finalresume";
     }
 
     @GetMapping("/displaycontact")

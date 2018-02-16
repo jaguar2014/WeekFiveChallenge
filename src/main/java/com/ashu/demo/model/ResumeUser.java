@@ -30,6 +30,9 @@ public class ResumeUser {
     @OneToMany(mappedBy = "resumeUser",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Skill> skills;
 
+    @OneToOne
+    private Summary summary;
+
 
     public int getId() {
         return id;
@@ -93,5 +96,13 @@ public class ResumeUser {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    public Summary getSummary() {
+        return summary;
+    }
+
+    public void setSummary(Summary summary) {
+        this.summary = summary;
     }
 }

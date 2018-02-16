@@ -11,11 +11,34 @@
 <body>
 <!-- Change the Navbar into a fragment, and make the class active depending on the variable passed -->
 
-<div th:replace="fragments/template::navbar">
+<div th:replace="fragments/template::resumenav">
 </div>
 
-<a class="btn btn-primary" href="/buildresume" role="button">Start Building Your Resume</a>
-<a class="btn btn-primary" href="/buildcoverletter" role="button">Start Building Your Cover Letter</a>
+
+<form th:action="@{/addcontact}" th:object="${resumeuser}" th:method="POST" class="form-group">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" th:field="*{firstName}" class="form-control"/>
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span> <br/>
+
+    <label for="fname">Last Name:</label>
+    <input type="text" id="lname" th:field="*{lastName}" class="form-control"/><br/>
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+
+    <br/> <label for="mail">Email:</label>
+    <input type="email" id="mail" th:field="*{email}" class="form-control"/>
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+
+    <br/>    <br/> <label for="picture">Picture:</label>
+    <input type="url" id="picture" th:field="*{pictureUrl}" class="form-control"/>
+    <span th:if="${#fields.hasErrors('pictureUrl')}" th:errors="*{pictureUrl}"></span> <br/>
+
+    <input type="submit" value="Save and Go to Next Page" class="btn btn-primary"/>
+
+</form>
+
 
 
 <!-- Optional JavaScript -->

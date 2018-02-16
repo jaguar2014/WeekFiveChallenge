@@ -33,6 +33,9 @@ public class HomeController {
     @Autowired
     ReferenceRepository referenceRepository;
 
+    @Autowired
+    CoverRepo coverRepo;
+
 
 
     @GetMapping("/")
@@ -136,6 +139,9 @@ public class HomeController {
     }
 
     //contain all the links
+
+
+
     @GetMapping("/buildresume")
     public String buildResume(){
 
@@ -143,12 +149,25 @@ public class HomeController {
         return "buildresumeform";
     }
 
-    @GetMapping("/buildcover")
-    public String buildCover(){
+    @GetMapping("/cover")
+    public String buildCover(Model model){
 
-
-        return "buildcoverform";
+     model.addAttribute("cover", new Cover());
+        return "buildcoverletter";
     }
+
+
+    @PostMapping("/cover")
+    public String addCover(@Valid Cover cover, BindingResult result){
+        if(result.hasErrors()){
+            return "buildcoverletter";
+        }
+        coverRepo.save(cover);
+
+        return "index";
+
+    }
+
 
     @GetMapping("/addcontact")
     public String addContact(Model model){
@@ -347,6 +366,14 @@ public class HomeController {
     {
 
         model.addAttribute("references", referenceRepository.findAll());
+        return "displayresume";
+    }
+
+      @GetMapping("/displaycover")
+    public String displayCover(Model model)
+    {
+
+        model.addAttribute("coverletter", coverRepo.findAll());
         return "displayresume";
     }
 

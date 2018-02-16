@@ -76,6 +76,15 @@
         </div>
     </section>
 
+
+
+    <ul th:fragment="cover" id="cover"   th:each="cover : ${coverletter}" type="none" >
+
+        <li th:text="${cover.coverletter}"></li>
+
+    </ul>
+
+
     <section th:fragment="skill" class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
         <div class="my-auto">
 
@@ -97,6 +106,10 @@
         </h1>
 
 
+
+
 </div>
+
+
 </body>
 </html>

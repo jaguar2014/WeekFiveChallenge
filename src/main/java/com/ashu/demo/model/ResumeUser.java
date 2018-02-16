@@ -2,7 +2,6 @@ package com.ashu.demo.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -10,28 +9,31 @@ public class ResumeUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-   private  int id;
+    private int id;
     @NotNull
     private String pictureUrl;
-@NotNull
+    @NotNull
     private String firstName;
-@NotNull
+    @NotNull
     private String lastName;
-@NotNull
+    @NotNull
     private String email;
 
 
-   @OneToMany(mappedBy = "resumeUser",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Education> educations;
 
-    @OneToMany(mappedBy = "resumeUser",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Experience> experiences;
 
-    @OneToMany(mappedBy = "resumeUser",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Skill> skills;
 
     @OneToOne
     private Summary summary;
+
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Reference> references;
 
 
     public int getId() {
@@ -104,5 +106,13 @@ public class ResumeUser {
 
     public void setSummary(Summary summary) {
         this.summary = summary;
+    }
+
+    public Set<Reference> getReferences() {
+        return references;
+    }
+
+    public void setReferences(Set<Reference> references) {
+        this.references = references;
     }
 }

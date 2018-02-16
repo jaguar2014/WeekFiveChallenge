@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+</head>
+<body>
+<!-- Change the Navbar into a fragment, and make the class active depending on the variable passed -->
+
+<div th:replace="fragments/template::resumenav">
+</div>
+
+
+<div class="container">
+    <h1 class="text-center">Add Skills With Rating</h1>
+    <div class="col-md-6 col-md-offset-3">
+
+        <form th:action="@{/addskill}" th:object="${skill}" th:method="POST" class="form-group">
+            <input type="hidden" th:field="*{id}"/>
+
+            Skill Name: <input type="text" th:field="*{skillName}" class="form-control"/>
+            <span th:if="${#fields.hasErrors('skillName')}" th:errors="*{skillName}"></span> <br/>
+
+            Your Rating: <input type="text" th:field="*{rating}" class="form-control"/>
+            <span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></span> <br/>
+
+
+            <input type="submit" value="Save" class="btn btn-primary"/>
+        </form>
+    </div>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

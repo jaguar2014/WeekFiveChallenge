@@ -1,11 +1,7 @@
 package com.ashu.demo.controller;
 
-import com.ashu.demo.model.Education;
-import com.ashu.demo.model.ResumeUser;
-import com.ashu.demo.repository.EducationRepository;
-import com.ashu.demo.repository.ExperienceRepository;
-import com.ashu.demo.repository.ResumeUserRepository;
-import com.ashu.demo.repository.SkillRepository;
+import com.ashu.demo.model.*;
+import com.ashu.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +25,15 @@ public class HomeController {
 
     @Autowired
     SkillRepository skillRepository;
+
+
+    @Autowired
+    SummaryRepository summaryRepository;
+
+    @Autowired
+    ReferenceRepository referenceRepository;
+
+
 
     @GetMapping("/")
     public String showIndex() {
@@ -70,7 +75,7 @@ public class HomeController {
         }
         resumeUserRepository.save(resumeUser);
 
-        return "redirect:/addmore";
+        return "buildresumeform";
 
     }
 
@@ -80,10 +85,106 @@ public class HomeController {
         model.addAttribute("education",new Education());
         return "educationform";
     }
+
+
+ @PostMapping("/addeducation")
+    public String addEducation(@Valid Education education , BindingResult result){
+
+        if(result.hasErrors()){
+            return "educationform";
+        }
+
+        educationRepository.save(education);
+
+        return "buildresumeform";
+    }
+
+
   @GetMapping("/addsummary")
     public String addSummary(Model model) {
         model.addAttribute("summary",new Education());
-        return "educationform";
+        return "summaryform";
+    }
+
+
+
+    @PostMapping("/addsummary")
+    public String addEducation(@Valid Summary summary , BindingResult result){
+
+        if(result.hasErrors()){
+            return "summaryform";
+        }
+
+        summaryRepository.save(summary);
+
+        return "buildresumeform";
+    }
+
+
+
+    @GetMapping("/addexperience")
+    public String addExperience(Model model)
+    {
+        model.addAttribute("experience", new Experience());
+
+        return "experienceform";
+    }
+
+    @PostMapping("/addexperience")
+    public String addUser(@Valid Experience experience , BindingResult result){
+
+        if(result.hasErrors()){
+            return "experienceform";
+        }
+
+        experienceRepository.save(experience);
+
+        return "buildresumeform";
+    }
+
+
+
+    @GetMapping("/addskill")
+    public String addSkill(Model model)
+    {
+        model.addAttribute("skill", new Skill());
+
+        return "skillform";
+    }
+
+
+    @PostMapping("/addskill")
+    public String addEducation(@Valid Skill skill , BindingResult result){
+
+        if(result.hasErrors()){
+            return "skillform";
+        }
+
+        skillRepository.save(skill);
+
+        return "buildresumeform";
+    }
+
+
+    @GetMapping("/addreference")
+    public String addReference(Model model)
+    {
+        model.addAttribute("reference", new Reference());
+
+        return "referenceform";
+    }
+
+
+    @PostMapping("/addreference")
+    public String addReference(@Valid Reference reference , BindingResult result){
+
+        if(result.hasErrors()){
+            return "referenceform";
+        }
+
+       referenceRepository.save(reference);
+
+        return "buildresumeform";
     }
 
 

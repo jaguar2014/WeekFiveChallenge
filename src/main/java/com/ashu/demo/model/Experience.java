@@ -6,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Experience {
@@ -29,8 +31,18 @@ public class Experience {
     private Date startDate;
 
 
+    @NotNull
+    @Size(min=1,max =15,message = "please provide end date")
+    private String endDate;
+
     @ManyToOne
     private ResumeUser resumeUser;
+
+    private String dutyone;
+
+    private String dutytwo;
+
+    private String dutythree;
 
     public long getId() {
         return id;
@@ -64,11 +76,43 @@ public class Experience {
         this.startDate = startDate;
     }
 
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
     public ResumeUser getResumeUser() {
         return resumeUser;
     }
 
     public void setResumeUser(ResumeUser resumeUser) {
         this.resumeUser = resumeUser;
+    }
+
+    public String getDutyone() {
+        return dutyone;
+    }
+
+    public void setDutyone(String dutyone) {
+        this.dutyone = dutyone;
+    }
+
+    public String getDutytwo() {
+        return dutytwo;
+    }
+
+    public void setDutytwo(String dutytwo) {
+        this.dutytwo = dutytwo;
+    }
+
+    public String getDutythree() {
+        return dutythree;
+    }
+
+    public void setDutythree(String dutythree) {
+        this.dutythree = dutythree;
     }
 }

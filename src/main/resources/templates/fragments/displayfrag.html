@@ -1,36 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Resume - Start Bootstrap Theme</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom fonts for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900"
-          rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-          rel="stylesheet">
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
-    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/resume.min.css" rel="stylesheet">
-
+    <meta charset="UTF-8"/>
+    <title>Display</title>
 </head>
+<body>
 
-<body id="page-top">
-<!-- Change the Navbar into a fragment, and make the class active depending on the variable passed -->
-
-<div th:replace="fragments/template::navbar">
-</div>
 
 <div class="container-fluid p-0">
 
@@ -43,7 +18,7 @@
         </div>
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+    <section th:fragment="about" class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
         <div class="my-auto">
             <h1 th:each="user : ${contact}" class="mb-0">
                 <span th:text="${user.firstName}">-</span>
@@ -59,7 +34,7 @@
         </div>
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+    <section th:fragment="experience" class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto">
 
 
@@ -80,7 +55,7 @@
 
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+    <section th:fragment="education" class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
 
 
@@ -101,7 +76,7 @@
         </div>
     </section>
 
-    <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+    <section th:fragment="skill" class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
         <div class="my-auto">
 
 
@@ -114,16 +89,5 @@
 
 
 </div>
-
-
-<!--<a class="btn btn-primary" href="/addcontact" role="button">Start Building Your Resume</a>-->
-<!--<a class="btn btn-primary" href="/buildcoverletter" role="button">Start Building Your Cover Letter</a>-->
-
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

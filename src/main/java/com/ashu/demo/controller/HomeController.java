@@ -36,10 +36,90 @@ public class HomeController {
 
 
     @GetMapping("/")
-    public String showIndex() {
+    public String showIndex(Model model) {
+
+
+
+
+
+
+
+
 
 
         return "index";
+    }
+
+    @GetMapping("/contact")
+    public String contact(Model model)
+    {
+
+        model.addAttribute("contact", resumeUserRepository.findAll());
+
+        return "contact";
+
+    }
+    @GetMapping("/education")
+    public String education(Model model)
+    {
+
+        model.addAttribute("educations", educationRepository.findAll());
+
+
+        return "education";
+
+    }
+
+
+   @GetMapping("/experience")
+    public String experience(Model model)
+    {
+
+        model.addAttribute("experiences", experienceRepository.findAll());
+
+
+
+        return "experience";
+
+    }
+   @GetMapping("/skill")
+    public String skill(Model model)
+    {
+
+        model.addAttribute("skills", skillRepository.findAll());
+
+
+
+        return "skill";
+
+
+
+    }
+
+    @GetMapping("/summary")
+    public String summary(Model model)
+    {
+
+        model.addAttribute("summary", summaryRepository.findAll());
+
+
+
+        return "summary";
+
+    }
+
+
+  @GetMapping("/reference")
+    public String reference(Model model)
+    {
+
+
+        model.addAttribute("references", referenceRepository.findAll());
+
+
+
+        return "reference";
+
     }
 
 

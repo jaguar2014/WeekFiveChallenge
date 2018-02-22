@@ -1,11 +1,14 @@
 package com.ashu.demo.security;
 
 
+import com.ashu.demo.repository.AppUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
@@ -13,11 +16,23 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    AppUserRepository userRepository;
+
+    @Override
+    public UserDetailsService userDetailsServiceBean() throws Exception {
+        return new SSUDS(userRepository);
+    }
+
+
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-     auth.inMemoryAuthentication().withUser("applicant").password("pass").authorities("APPLICANT")
-             .and()
-             .withUser("employer").password("emppass").authorities("EMPLOYER");
+//     auth.inMemoryAuthentication().withUser("applicant").password("pass").authorities("APPLICANT")
+//             .and()
+//             .withUser("employer").password("emppass").authorities("EMPLOYER");
+
+        auth.userDetailsService(userDetailsServiceBean());
     }
 
     @Override

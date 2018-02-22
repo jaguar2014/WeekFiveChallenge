@@ -3,6 +3,7 @@ package com.ashu.demo.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 public class Skill {
@@ -18,6 +19,8 @@ public class Skill {
     @Size(min=1, message = "Please provide a skills rating")
     private String rating;
 
+    @ManyToMany(mappedBy = "skillSet")
+    private Set<JobPost> jobPostSet;
 
     @ManyToOne
     private ResumeUser resumeUser;

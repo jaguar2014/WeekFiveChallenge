@@ -5,7 +5,9 @@ import com.ashu.demo.model.AppUser;
 import com.ashu.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DataLoader implements CommandLineRunner {
 
 
@@ -40,6 +42,20 @@ public class DataLoader implements CommandLineRunner {
             role = new AppRole();
             role.setRoleName("RECRUITER");
             roleRepo.save(role);
+
+            AppUser user = new AppUser();
+            user.setUsername("Applicant");
+            user.setPassword("password");
+            user.addRole(roleRepo.findAppRoleByRoleName("APPLICANT"));
+            userRepository.save(user);
+
+            user = new AppUser();
+            user.setUsername("Recruiter");
+            user.setPassword("password");
+            user.addRole(roleRepo.findAppRoleByRoleName("RECRUITER"));
+
+            userRepository.save(user);
+
 
 
 

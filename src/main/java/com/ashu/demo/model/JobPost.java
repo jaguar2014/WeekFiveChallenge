@@ -17,16 +17,23 @@ public class JobPost {
     private String jobDescription;
 
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Skill> skillSet;
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "jobPost")
+    private Set<Skill> skills;
 
-    @ManyToOne()
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Organization organization;
 
 
     public JobPost(){
 
-      this.skillSet = new HashSet<>();
+      this.skills = new HashSet<>();
+  }
+
+  public void addSkill(Skill s)
+  {
+      this.skills.add(s);
   }
 
 
@@ -46,12 +53,12 @@ public class JobPost {
         this.jobDescription = jobDescription;
     }
 
-    public Set<Skill> getSkillSet() {
-        return skillSet;
+    public Set<Skill> getSkills() {
+        return skills;
     }
 
-    public void setSkillSet(Set<Skill> skillSet) {
-        this.skillSet = skillSet;
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
     }
 
     public Organization getOrganization() {

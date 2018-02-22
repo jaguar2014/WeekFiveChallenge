@@ -2,6 +2,7 @@ package com.ashu.demo.config;
 
 import com.ashu.demo.model.AppRole;
 import com.ashu.demo.model.AppUser;
+import com.ashu.demo.model.Skill;
 import com.ashu.demo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -81,20 +82,20 @@ public class DataLoader implements CommandLineRunner {
 //            user.addRole(roleRepo.findAppRoleByRoleName("EMPLOYER"));
 //            userRepository.save(user);
 //
-//            Skill aSkill = new Skill();
-//            aSkill.setProficiency("proficient");
-//            aSkill.setSkillName("skill");
-//            skillRepository.save(aSkill);
-//
-//            aSkill = new Skill();
-//            aSkill.setProficiency("very proficient");
-//            aSkill.setSkillName("new skill");
-//            skillRepository.save(aSkill);
-//
-//            aSkill = new Skill();
-//            aSkill.setProficiency("ever more proficient");
-//            aSkill.setSkillName("newer skill");
-//            skillRepository.save(aSkill);
+            Skill aSkill = new Skill();
+            aSkill.setRating("proficient");
+            aSkill.setSkillName("skill");
+            skillRepository.save(aSkill);
+
+            aSkill = new Skill();
+            aSkill.setRating("very proficient");
+            aSkill.setSkillName("new skill");
+            skillRepository.save(aSkill);
+
+            aSkill = new Skill();
+            aSkill.setRating("ever more proficient");
+            aSkill.setSkillName("newer skill");
+            skillRepository.save(aSkill);
 //
 //            Education e = new Education();
 //            e.setCourse("A course");

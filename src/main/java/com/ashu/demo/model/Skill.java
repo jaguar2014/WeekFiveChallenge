@@ -19,8 +19,17 @@ public class Skill {
     @Size(min=1, message = "Please provide a skills rating")
     private String rating;
 
-    @ManyToMany(mappedBy = "skillSet")
-    private Set<JobPost> jobPostSet;
+
+    @ManyToOne
+    private JobPost jobPost;
+
+    public JobPost getJobPost() {
+        return jobPost;
+    }
+
+    public void setJobPost(JobPost jobPost) {
+        this.jobPost = jobPost;
+    }
 
     @ManyToOne
     private ResumeUser resumeUser;

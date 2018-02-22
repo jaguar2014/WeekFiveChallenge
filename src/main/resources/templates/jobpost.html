@@ -38,7 +38,7 @@ Organization description: <input type="text" th:field="*{organization.descriptio
     <span th:if="${#fields.hasErrors('organization.description')}" th:errors="*{organization.description}"></span> <br/>
 
     <select th:field="*{skills}" class="selectpicker" multiple="multiple">
-        <option th:each="skill: ${skills}" th:value="${{skill}}" th:text="${skill.skillName}"> skill.skillName</option>
+        <option th:each="skill: ${skills}" th:value="${{skills}}" th:text="${skill.skillName}"> skill.skillName</option>
     </select>
 
 

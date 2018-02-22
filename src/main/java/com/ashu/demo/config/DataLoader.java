@@ -38,7 +38,7 @@ public class DataLoader implements CommandLineRunner {
             roleRepo.save(role);
 
             role = new AppRole();
-            role.setRoleName("ADMIN");
+            role.setRoleName("RECRUITER");
             roleRepo.save(role);
 
 

@@ -24,6 +24,8 @@ public class AppUser {
     private String password;
 
 
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     //This needs to be instantiated in the construtor so you can use it to add and remove individual roles
     private Set<AppRole> roles;

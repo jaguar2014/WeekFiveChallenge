@@ -1,4 +1,7 @@
 package com.ashu.demo.repository;
 
-public class JobPostRepository {
+import com.ashu.demo.model.JobPost;
+import org.springframework.data.repository.CrudRepository;
+
+public interface JobPostRepository extends CrudRepository<JobPost, Long> {
 }

@@ -26,7 +26,7 @@ public class ResumeUser {
     @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Experience> experiences;
 
-    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany( fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Skill> skills;
 
     @OneToOne

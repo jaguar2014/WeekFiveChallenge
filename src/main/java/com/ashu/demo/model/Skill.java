@@ -23,6 +23,11 @@ public class Skill {
     @ManyToMany(mappedBy = "skills")
     private Set<JobPost> jobPosts;
 
+
+    @ManyToMany(mappedBy = "skills")
+    private Set<ResumeUser> resumeUsers;
+
+
     public Set<JobPost> getJobPosts() {
         return jobPosts;
     }
@@ -31,8 +36,7 @@ public class Skill {
         this.jobPosts = jobPosts;
     }
 
-    @ManyToOne
-    private ResumeUser resumeUser;
+
 
     public long getId() {
         return id;
@@ -58,11 +62,11 @@ public class Skill {
         this.rating = rating;
     }
 
-    public ResumeUser getResumeUser() {
-        return resumeUser;
+    public Set<ResumeUser> getResumeUsers() {
+        return resumeUsers;
     }
 
-    public void setResumeUser(ResumeUser resumeUser) {
-        this.resumeUser = resumeUser;
+    public void setResumeUsers(Set<ResumeUser> resumeUsers) {
+        this.resumeUsers = resumeUsers;
     }
 }

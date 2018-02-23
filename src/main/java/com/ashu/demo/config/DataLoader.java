@@ -1,12 +1,15 @@
 package com.ashu.demo.config;
 
-import com.ashu.demo.model.AppRole;
-import com.ashu.demo.model.AppUser;
-import com.ashu.demo.model.Skill;
+import com.ashu.demo.model.*;
 import com.ashu.demo.repository.*;
+import com.sun.javafx.applet.ExperimentalExtensions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -27,6 +30,15 @@ public class DataLoader implements CommandLineRunner {
 
         @Autowired
         ExperienceRepository experienceRepository;
+
+        @Autowired
+        ResumeUserRepository resumeUserRepository;
+
+        @Autowired
+        ReferenceRepository referenceRepository;
+
+        @Autowired
+        SummaryRepository summaryRepository;
 
         @Override
         public void run(String... strings) throws Exception {
@@ -57,6 +69,79 @@ public class DataLoader implements CommandLineRunner {
 
             userRepository.save(user);
 
+            Set<Skill> skills = new HashSet<>();
+            Set<Education> educations = new HashSet<>();
+            Set<Experience> experiences = new HashSet<>();
+            Set<Reference> references = new HashSet<>();
+            Summary summary = new Summary();
+            summary.setSummarytext("This is the summary");
+            summaryRepository.save(summary);
+
+
+
+
+            ResumeUser resumeUser = new ResumeUser();
+            resumeUser.setFirstName("Ashenafi");
+            resumeUser.setLastName("Mulat");
+            resumeUser.setEmail("ashu@gmail.com");
+            resumeUser.setPictureUrl("http://www.google.com");
+            resumeUser.setSummary(summary);
+
+
+            Skill aSkill = new Skill();
+            aSkill.setRating("proficient");
+            aSkill.setSkillName("skill");
+            skillRepository.save(aSkill);
+            skills.add(aSkill);
+
+            aSkill = new Skill();
+            aSkill.setRating("very proficient");
+            aSkill.setSkillName("new skill");
+            skillRepository.save(aSkill);
+            skills.add(aSkill);
+
+            aSkill = new Skill();
+            aSkill.setRating("ever more proficient");
+            aSkill.setSkillName("newer skill");
+            skillRepository.save(aSkill);
+            skills.add(aSkill);
+            skillRepository.save(skills);
+
+            Education education = new Education();
+            education.setDegreeName("Computer science");
+            education.setDegreeType("BSc");
+            education.setGradYear(new Date("12/20/2005"));
+            education.setSchool("BDU");
+            educations.add(education);
+            educationRepository.save(educations);
+
+            Experience experience = new Experience();
+            experience.setCompany("wmata");
+            experience.setDutyone("clean");
+            experience.setDutytwo("cook");
+            experience.setJobTitle("engineer");
+            experience.setStartDate(new Date("12/20/30"));
+            experience.setEndDate("current");
+            experiences.add(experience);
+            experienceRepository.save(experiences);
+
+            Reference reference = new Reference();
+            reference.setEmail("ashu@yahoo.com");
+            reference.setFirstName("tena");
+            reference.setLastName("loli");
+            references.add(reference);
+
+            referenceRepository.save(references);
+
+
+            resumeUser.setEducations(educations);
+            resumeUser.setExperiences(experiences);
+            resumeUser.setEducations(educations);
+            resumeUser.setSkills(skills);
+            resumeUser.setReferences(references);
+            resumeUserRepository.save(resumeUser);
+
+
 
 
 
@@ -72,6 +157,9 @@ public class DataLoader implements CommandLineRunner {
 //            user.setImage("http://www.nurseryrhymes.org/nursery-rhymes-styles/images/john-jacob-jingleheimer-schmidt.jpg");
 //            user.addRole(roleRepo.findAppRoleByRoleName("APPLICANT"));
 //            userRepository.save(user);
+
+
+
 //
 //
 //            user = new AppUser();
@@ -81,21 +169,7 @@ public class DataLoader implements CommandLineRunner {
 //            user.setLastName("User");
 //            user.addRole(roleRepo.findAppRoleByRoleName("EMPLOYER"));
 //            userRepository.save(user);
-//
-            Skill aSkill = new Skill();
-            aSkill.setRating("proficient");
-            aSkill.setSkillName("skill");
-            skillRepository.save(aSkill);
 
-            aSkill = new Skill();
-            aSkill.setRating("very proficient");
-            aSkill.setSkillName("new skill");
-            skillRepository.save(aSkill);
-
-            aSkill = new Skill();
-            aSkill.setRating("ever more proficient");
-            aSkill.setSkillName("newer skill");
-            skillRepository.save(aSkill);
 //
 //            Education e = new Education();
 //            e.setCourse("A course");

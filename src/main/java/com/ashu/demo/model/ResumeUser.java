@@ -20,19 +20,19 @@ public class ResumeUser {
     private String email;
 
 
-    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Education> educations;
 
-    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Experience> experiences;
 
-    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Skill> skills;
 
     @OneToOne
     private Summary summary;
 
-    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resumeUser", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private Set<Reference> references;
 
 

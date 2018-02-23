@@ -71,7 +71,7 @@ public class JobPostController {
 
 
 
-        return "redirect:/jobs/postjob";
+        return "jobsindex";
 
     }
 

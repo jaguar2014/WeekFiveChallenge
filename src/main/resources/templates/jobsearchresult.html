@@ -16,12 +16,12 @@
 
    <ul type="none" th:each="jobPost : ${jobPosts}" th:inline="text">
 
-       <li >
-           [[${jobPost.organization.companyName}]]<a href="/jobs/apply">Apply</a>
+       <li >Company Name
+           [[${jobPost.organization.companyName}]]
 
        </li>
-       <li>[[${jobPost.organization.description}]]</li><a href="/jobs/apply">Apply</a>
-
+       <li>Description [[${jobPost.organization.description}]]
+       </li><a href="/jobs/apply">Apply</a>
    </ul>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

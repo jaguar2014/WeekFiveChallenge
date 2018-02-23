@@ -4,6 +4,7 @@ package com.ashu.demo.model;
 import org.hibernate.id.uuid.StandardRandomStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,10 +15,15 @@ public class JobPost {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
     private String jobDescription;
 
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "jobPost")
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinTable(name = "jobpost_skills",
+            joinColumns = @JoinColumn(name = "jobpost_id"),
+            inverseJoinColumns = @JoinColumn(name = "skill_id")
+    )
     private Set<Skill> skills;
 
 

@@ -11,24 +11,24 @@ public class Skill {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
+
     @Size(min=1,message = "please provide a skill name")
     private String skillName;
 
-    @NotNull
+
     @Size(min=1, message = "Please provide a skills rating")
     private String rating;
 
 
-    @ManyToOne
-    private JobPost jobPost;
+    @ManyToMany(mappedBy = "skills")
+    private Set<JobPost> jobPosts;
 
-    public JobPost getJobPost() {
-        return jobPost;
+    public Set<JobPost> getJobPosts() {
+        return jobPosts;
     }
 
-    public void setJobPost(JobPost jobPost) {
-        this.jobPost = jobPost;
+    public void setJobPosts(Set<JobPost> jobPosts) {
+        this.jobPosts = jobPosts;
     }
 
     @ManyToOne

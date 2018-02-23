@@ -28,6 +28,8 @@ public class JobPost {
 
 
 
+
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Organization organization;
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 
 @Controller
 public class HomeController {
@@ -36,6 +37,9 @@ public class HomeController {
     @Autowired
     CoverRepo coverRepo;
 
+    @Autowired
+    JobPostRepository jobPostRepository;
+
 
 
     @GetMapping("/")
@@ -45,6 +49,8 @@ public class HomeController {
 
 
 
+
+     model.addAttribute("alljobs", jobPostRepository.findAll());
 
 
 

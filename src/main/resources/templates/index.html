@@ -36,6 +36,16 @@
 
 <div class="container-fluid p-0">
 
+    <ul sec:authorize="hasAuthority('APPLICANT')" type="none" th:each="jobPost : ${alljobs}" th:inline="text">
+
+        <li >Company Name
+            [[${jobPost.organization.companyName}]]
+
+        </li>
+        <li>Description [[${jobPost.organization.description}]]
+        </li><a href="/jobs/apply">Apply</a>
+    </ul>
+
     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="start">
         <div class="my-auto">
 
@@ -112,6 +122,8 @@
             </ul>
         </div>
     </section>
+
+
 
 
 

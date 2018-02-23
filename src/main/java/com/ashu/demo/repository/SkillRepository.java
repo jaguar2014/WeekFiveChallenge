@@ -8,4 +8,5 @@ public interface SkillRepository extends CrudRepository<Skill, Long> {
 
 
 
+
 }

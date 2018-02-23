@@ -6,6 +6,7 @@ import com.ashu.demo.repository.JobPostRepository;
 import com.ashu.demo.repository.SkillRepository;
 import com.sun.xml.internal.ws.resources.HttpserverMessages;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -76,20 +77,22 @@ public class JobPostController {
     }
 
     @GetMapping("/jobsmatchingskill")
-    private String jobsMatchingSkill(Model model) {
+    private String jobsMatchingSkill(Model model, Authentication auth) {
 
         //retrive all skills the user have and their corresponding skillId ..
         //retrive all the jobs and associated skill id
         //filter out jobs with matching skill id
 
-        Iterable<Skill> skills = skillRepository.findAll();
-
-        Iterable<JobPost> jobPosts = jobPostRepository.findAll();
-
-        Iterable<JobPost> matchingJobs = new ArrayList<>();
+        //skills is resume user skill from specfic user.. find all skills and filter by username ...
 
 
-        return "";
+
+
+
+
+
+
+        return "redirect:/";
 
     }
 

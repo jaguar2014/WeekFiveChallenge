@@ -51,7 +51,7 @@ public class JobPostController {
             return "jobpost";
 
         }
-        Set<Skill> skills = new HashSet<>();
+
         Skill skill = new Skill();
 
         String[] ids = request.getParameterValues("skill");

@@ -71,7 +71,7 @@ public class JobPostController {
 
 
 
-        return "jobsindex";
+        return "redirect:/jobs/postjob";
 
     }
 
@@ -90,6 +90,24 @@ public class JobPostController {
 
 
         return "";
+
+    }
+
+    @PostMapping("/searchbyorg")
+    private String jobbyorg(HttpServletRequest request,Model model){
+
+        String searchString = request.getParameter("srch-term");
+        model.addAttribute("search",searchString);
+        model.addAttribute("jobPosts",jobPostRepository.findJobPostByOrganizationCompanyName(searchString));
+
+        return "jobsearchresult";
+
+    }
+    @GetMapping("/displayjobs")
+    private String displayJob(Model model){
+        model.addAttribute("jobPosts",jobPostRepository.findAll());
+
+        return "jobsearchresult";
 
     }
 

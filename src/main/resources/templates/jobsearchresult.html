@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Display Search Result</title>
+</head>
+<body>
+
+   <ul type="none">
+
+       <li th:each="jobPost : ${jobPosts}" th:inline="text">
+           [[${jobPost.organization.companyName}]]
+           [[${jobPost.organization.description}]]
+           <a href="/jobs/apply">Apply</a>
+       </li>
+   </ul>
+
+</body>
+</html>

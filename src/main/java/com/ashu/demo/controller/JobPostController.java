@@ -45,52 +45,53 @@ public class JobPostController {
     }
 
     @PostMapping("/postjob")
-    private String processJobPost(@Valid @ModelAttribute("jobpost") JobPost jobpost, BindingResult result,HttpServletRequest request) {
+    private String processJobPost(@Valid @ModelAttribute("jobpost") JobPost jobpost, BindingResult result, HttpServletRequest request) {
 
         if (result.hasErrors()) {
             return "jobpost";
 
         }
+        Set<Skill> skills = new HashSet<>();
         Skill skill = new Skill();
 
         String[] ids = request.getParameterValues("skill");
 
         for (String id :
                 ids) {
-          skill.setId(skillRepository.findSkillById(new Long(id)).getId());
-          skill.setSkillName(skillRepository.findSkillById(new Long(id)).getSkillName());
-          skill.setRating(skillRepository.findSkillById(new Long(id)).getRating());
+            skill.setId(skillRepository.findSkillById(new Long(id)).getId());
+            skill.setSkillName(skillRepository.findSkillById(new Long(id)).getSkillName());
+            skill.setRating(skillRepository.findSkillById(new Long(id)).getRating());
+            jobpost.addSkill(skill);
+            jobPostRepository.save(jobpost);
+
+
         }
 
 
 
-   jobpost.addSkill(skill);
 
-
-
-        jobPostRepository.save(jobpost);
 
         return "jobsindex";
 
     }
 
-      @GetMapping("/jobsmatchingskill")
-        private String jobsMatchingSkill(Model model){
+    @GetMapping("/jobsmatchingskill")
+    private String jobsMatchingSkill(Model model) {
 
-          //retrive all skills the user have and their corresponding skillId ..
-          //retrive all the jobs and associated skill id
-          //filter out jobs with matching skill id
+        //retrive all skills the user have and their corresponding skillId ..
+        //retrive all the jobs and associated skill id
+        //filter out jobs with matching skill id
 
-          Iterable<Skill> skills = skillRepository.findAll();
+        Iterable<Skill> skills = skillRepository.findAll();
 
-          Iterable<JobPost> jobPosts = jobPostRepository.findAll();
+        Iterable<JobPost> jobPosts = jobPostRepository.findAll();
 
-          Iterable<JobPost> matchingJobs = new ArrayList<>();
+        Iterable<JobPost> matchingJobs = new ArrayList<>();
 
 
-          return "";
+        return "";
 
-        }
+    }
 
 }
 

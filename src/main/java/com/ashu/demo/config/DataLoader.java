@@ -2,7 +2,7 @@ package com.ashu.demo.config;
 
 import com.ashu.demo.model.*;
 import com.ashu.demo.repository.*;
-import com.sun.javafx.applet.ExperimentalExtensions;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

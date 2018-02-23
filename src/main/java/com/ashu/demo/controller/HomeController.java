@@ -374,7 +374,7 @@ public class HomeController {
     {
 
         model.addAttribute("coverletter", coverRepo.findAll());
-        return "displayresume";
+        return "displaycover";
     }
 
 

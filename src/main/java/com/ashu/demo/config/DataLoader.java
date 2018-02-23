@@ -66,6 +66,12 @@ public class DataLoader implements CommandLineRunner {
             user.setUsername("Recruiter");
             user.setPassword("password");
             user.addRole(roleRepo.findAppRoleByRoleName("RECRUITER"));
+            userRepository.save(user);
+
+            user = new AppUser();
+            user.setUsername("Employer");
+            user.setPassword("password");
+            user.addRole(roleRepo.findAppRoleByRoleName("EMPLOYER"));
 
             userRepository.save(user);
 
@@ -74,7 +80,7 @@ public class DataLoader implements CommandLineRunner {
             Set<Experience> experiences = new HashSet<>();
             Set<Reference> references = new HashSet<>();
             Summary summary = new Summary();
-            summary.setSummarytext("This is the summary");
+            summary.setSummarytext("experienced spring mvc developer with over 2 months of experience ....");
             summaryRepository.save(summary);
 
 
@@ -110,25 +116,25 @@ public class DataLoader implements CommandLineRunner {
             Education education = new Education();
             education.setDegreeName("Computer science");
             education.setDegreeType("BSc");
-            education.setGradYear(new Date("12/20/2005"));
+            education.setGradYear(new Date("08/09/2011"));
             education.setSchool("BDU");
             educations.add(education);
             educationRepository.save(educations);
 
             Experience experience = new Experience();
-            experience.setCompany("wmata");
-            experience.setDutyone("clean");
-            experience.setDutytwo("cook");
-            experience.setJobTitle("engineer");
-            experience.setStartDate(new Date("12/20/30"));
+            experience.setCompany("WMATA");
+            experience.setDutyone("Maintain CCTV system");
+            experience.setDutytwo("Maintain PA system");
+            experience.setJobTitle("Communication Tech");
+            experience.setStartDate(new Date("09/20/2011"));
             experience.setEndDate("current");
             experiences.add(experience);
             experienceRepository.save(experiences);
 
             Reference reference = new Reference();
-            reference.setEmail("ashu@yahoo.com");
-            reference.setFirstName("tena");
-            reference.setLastName("loli");
+            reference.setEmail("riri@yahoo.com");
+            reference.setFirstName("riri");
+            reference.setLastName("haile");
             references.add(reference);
 
             referenceRepository.save(references);
